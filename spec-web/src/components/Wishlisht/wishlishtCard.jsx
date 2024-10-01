@@ -46,7 +46,7 @@ const WishlistCard = ({ item, onRemove }) => {
           {/* Button to view item details */}
           <button
             onClick={handleViewDetails}
-            className="bg-[#25b0bd] text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-400 transition duration-300 flex items-center justify-center h-10 w-full"
+            className="bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-400 transition duration-300 flex items-center justify-center h-10 w-full"
           >
             <span className="font-semibold">View Details</span>
           </button>

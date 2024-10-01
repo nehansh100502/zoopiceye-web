@@ -11,14 +11,14 @@ const Wishlist = () => {
   };
 
   return (
-    <div className="p-20 bg-[#1ea1a3] text-white min-h-screen rounded-lg shadow-lg max-w-7xl mx-auto mt-11">
+    <div className="p-20 bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-white min-h-screen rounded-lg shadow-lg max-w-7xl mx-auto mt-11">
       {wishlist.length === 0 ? (
         <div className='text-center'>
           <h2 className="text-4xl font-semibold mb-4 mt-12">Your Wishlist</h2>
           <p>Your wishlist is empty.</p>
           <Link
             to="/SpectacleList" // Link to the collection page
-            className="bg-[#a3ecf7] text-xl w-60 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-blue-300 mt-4 inline-block"
+            className="bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-xl w-60 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-blue-300 mt-4 inline-block"
           >
             Continue Shopping
           </Link>

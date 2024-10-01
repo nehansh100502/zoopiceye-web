@@ -4,13 +4,17 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  background: rgba(74, 68, 68, 0.964); 
+  background: rgba(74, 68, 68, 0.964);
   border-radius: 50%;
   cursor: pointer;
-  z-index: 1; /* Ensure arrows are above other content */
-  position: absolute; /* Ensure arrows are positioned relative to the slider */
-  top: 50%; /* Align arrows vertically in the center */
-  transform: translateY(-50%); /* Adjust for proper vertical alignment */
+  z-index: 1;
+  /* Ensure arrows are above other content */
+  position: absolute;
+  /* Ensure arrows are positioned relative to the slider */
+  top: 50%;
+  /* Align arrows vertically in the center */
+  transform: translateY(-50%);
+  /* Adjust for proper vertical alignment */
 }
 
 .slick-prev {
@@ -18,7 +22,7 @@
 }
 
 .slick-next {
-  right: 10px; 
+  right: 10px;
 }
 
 .slick-arrow i {

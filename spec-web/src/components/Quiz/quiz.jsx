@@ -15,10 +15,10 @@ const FAQ = () => {
   return (
     <div className="w-full bg-gray-100 py-10 ">
       <div className="container w-full  bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-2xl mb-6">Frequently Asked Questions</h1>
+        <h1 className="text-2xl mb-6">Frequently Asked Questions(FAQ) :</h1>
 
         {/* Question 1 */}
-        <div className="border-b border-gray-300 mb-4">
+        {/* <div className="border-b border-gray-300 mb-4">
           <div
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleQuestion(1)}
@@ -35,7 +35,7 @@ const FAQ = () => {
               </p>
             </div>
           )}
-        </div>
+        </div> */}
 
         {/* Question 2 */}
         <div className="border-b border-gray-300 mb-4">
@@ -49,7 +49,7 @@ const FAQ = () => {
           {openQuestion === 2 && (
             <div className="mt-4 text-gray-700">
               <p>
-                Delivery usually takes 3-5 business days for standard shipping
+                Delivery usually takes 2-7 business days for standard shipping
                 and 1-2 business days for express shipping.
               </p>
             </div>
@@ -90,8 +90,7 @@ const FAQ = () => {
           {openQuestion === 4 && (
             <div className="mt-4 text-gray-700">
               <p>
-                Yes, we ship internationally! Shipping costs and delivery times
-                will vary depending on the destination country.
+                NO,
               </p>
             </div>
           )}
@@ -109,8 +108,7 @@ const FAQ = () => {
           {openQuestion === 5 && (
             <div className="mt-4 text-gray-700">
               <p>
-                We accept all major credit cards (Visa, MasterCard, American
-                Express), PayPal, and Apple Pay.
+                We accept all major credit cards, PayPal, and Phone Pay, PayTm, UPI , Net Banking,etc .
               </p>
             </div>
           )}

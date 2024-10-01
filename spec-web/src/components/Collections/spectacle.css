@@ -1,0 +1,23 @@
+.message-container1 {
+    display: flex;
+    margin-top: 140px;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(to right, #2f7ea5, #065ac1); */
+    /* color: #f6fe05; */
+    font-weight: bold;
+    font-family: cursive
+}
+
+.message-text1 {
+    text-align: center;
+    font-size: 30px;
+    /* Smaller text size for mobile */
+}
+
+@media (min-width: 768px) {
+    .message-text1 {
+        font-size: 30px;
+        /* Larger text size for larger screens */
+    }
+}

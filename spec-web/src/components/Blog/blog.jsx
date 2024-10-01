@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/pic01.jpeg';
 import logo1 from '../../assets/spec01.jpg';
 import { FaSmile } from 'react-icons/fa';
-import OurTeam from '../AboutUs/ourTeam';
-
 
 const Blog = () => {
   return (

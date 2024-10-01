@@ -53,7 +53,7 @@ const ReviewCard = () => {
 
   return (
     <div className="relative w-full p-4">
-      <h2 className="text-3xl font-bold mb-4 text-center">Customer Reviews</h2>
+      <h2 className="text-3xl font-bold mb-4 text-center text-[#13a6cb]">Customer Reviews</h2>
       <div className="flex items-center">
         {/* Left Arrow */}
         <button

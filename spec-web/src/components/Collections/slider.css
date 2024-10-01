@@ -1,0 +1,27 @@
+.slick-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: rgba(74, 68, 68, 0.964); 
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1; /* Ensure arrows are above other content */
+  position: absolute; /* Ensure arrows are positioned relative to the slider */
+  top: 50%; /* Align arrows vertically in the center */
+  transform: translateY(-50%); /* Adjust for proper vertical alignment */
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px; 
+}
+
+.slick-arrow i {
+  color: rgba(26, 130, 235, 0.928);
+  font-size: 20px;
+}

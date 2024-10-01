@@ -1,0 +1,86 @@
+/* Ensure the spin wheel container has a smooth transition effect */
+.spin-wheel-container {
+    transition: transform 5s ease-out;
+    position: relative; 
+    width: 300px; 
+    height: 300px; 
+    border-radius: 50%;
+    border: 8px double rgb(33, 33, 33);
+    overflow: hidden; 
+    background-color: #f9f6f6;
+}
+
+/* Ensure segments are styled correctly */
+.spin-wheel-segment {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    clip-path: polygon(50% 50%, 100% 0, 100% 66%);
+    transform-origin: center;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 40px;
+    padding-bottom: 100px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+     background: inherit; 
+}
+
+/* Different segments with darker background colors */
+.spin-wheel-segment:nth-child(1) {
+    background-color: #388e3c; /* Dark Green */
+    transform: rotate(0deg);
+}
+
+.spin-wheel-segment:nth-child(2) {
+    background-color: #13f739f7; /* Dark Yellow */
+    transform: rotate(90deg);
+}
+
+.spin-wheel-segment:nth-child(3) {
+    background-color: #d32f2f; /* Dark Red */
+    transform: rotate(180deg);
+}
+
+.spin-wheel-segment:nth-child(4) {
+    background-color: #b41f99; /* Dark Blue */
+    transform: rotate(270deg);
+}
+
+
+
+/* Arrow styling */
+.spin-wheel-arrow {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #0511f9; 
+    font-size: 50px;
+    z-index: 1;
+}
+
+/* Button styling */
+.spin-wheel-button {
+    position: absolute;
+    /* top: 50%; */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background-color: #f8f0f0; 
+    /* text-transform: uppercase; */
+    border: 1px solid #737272;
+    font-weight: bold;
+    font-size: 14px;
+    color: #1a1919;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    margin-top: 55px;
+    /* letter-spacing: 1px; */
+}

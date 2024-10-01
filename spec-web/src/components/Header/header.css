@@ -1,0 +1,118 @@
+
+.header {
+  z-index: 50;
+  background-color: rgba(252, 246, 246, 0.96);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background: linear-gradient(to right, #2f7ea5, #065ac1);
+  color: #f1d017;
+  font-size: 0.875rem; /* Text size for smaller screens */
+  /* font-weight: bold; */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  height: 4rem;
+  position: relative;
+}
+
+/* Logo Styles */
+.logo {
+  height: 3rem;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Desktop Menu */
+.menu-items {
+  display: flex;
+  gap: 1rem;
+}
+
+.menu-items a, .menu-items button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.menu-items a:hover, .menu-items button:hover {
+  color: #189AB4;
+}
+
+/* Active link styles */
+.menu-items a.text-orange-800 {
+  color: #F97316;
+}
+
+/* Mobile Menu Styles */
+.menu-items.mobile-menu {
+  display: none;
+}
+
+.menu-items.mobile-menu.open {
+  display: flex;
+  position: fixed;
+  top: 4rem; /* Space below the header */
+  right: 0;
+  background-color: white;
+  width: 100%;
+  height: calc(100vh - 4rem);
+  z-index: 40;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-items.mobile-menu a, .menu-items.mobile-menu button {
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 0.25rem;
+}
+
+.menu-items.mobile-menu a:hover, .menu-items.mobile-menu button:hover {
+  background-color: #F0F4F8;
+}
+
+/* Ensure logo is responsive */
+@media (min-width: 768px) {
+  .logo {
+    height: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-items {
+    display: none;
+  }
+
+  .menu-items.mobile-menu.open {
+    transform: translateX(0);
+  }
+}
+
+.message-text {
+  text-align: center;
+  font-size: 0.875rem; /* Smaller text size for mobile */
+}
+
+@media (min-width: 768px) {
+  .message-text {
+    font-size: 1rem; /* Larger text size for larger screens */
+  }
+}

@@ -117,7 +117,7 @@ const SpectacleList = () => {
   useEffect(() => {
     const fetchSpectacles = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/v1/spectacles');
+        const response = await fetch('https://zoopiceye.onrender.com/api/v1/spectacles');
         if (response.ok) {
           const data = await response.json();
 

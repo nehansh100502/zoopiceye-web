@@ -17,7 +17,7 @@ const ImageCarousel = ({ images }) => {
 
   return (
     <>
-      <div className='bg-gradient-to-b from-[#0c8de9] to-[#0b60a6]'>
+      <div className='bg-gradient-to-b from-[#ffffff] to-[#0d4e83dc]'>
         <div className="relative w-full max-w-[700px] mx-auto p-3">
           <img
             src={images[currentIndex]}

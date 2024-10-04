@@ -75,7 +75,7 @@ const ReviewCard = () => {
               className="bg-white shadow-lg rounded-lg p-6 w-[300px] h-[200px] flex flex-col justify-between transition transform hover:shadow-xl"
             >
               <div>
-                <p className="text-gray-800 font-semibold text-lg text-center">{review.username}</p>
+                <p className="text-[#2ca5f6] font-semibold text-lg text-center">{review.username}</p>
                 <p className="text-gray-600 mt-2 text-center">{review.comment}</p>
               </div>
               <div className="p-9">

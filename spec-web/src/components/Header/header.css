@@ -57,6 +57,22 @@ nav {
 .menu-items a.text-orange-800 {
   color: #F97316;
 }
+/* Active link styles with blue underline */
+.active-link {
+  color: #F97316; /* Active link color */
+  position: relative;
+}
+
+.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #189AB4; /* Blue underline */
+}
+
 
 /* Mobile Menu Styles */
 .menu-items.mobile-menu {

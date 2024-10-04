@@ -333,7 +333,7 @@ const UserProfile = () => {
     <div className="max-w-5xl mx-auto mt-10 bg-[#ece9e9] p-8 rounded-lg shadow-lg">
       <h2 className="text-3xl font-bold text-center mb-4 mt-10 text-[#2cb5ca]">My Profile</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mb-10">
+      <div className="grid grid-cols-1 md:grid-row gap-6 items-center mb-10 ">
         <div className="text-center relative">
           <img
             src={defaultProfilePic}
@@ -353,7 +353,7 @@ const UserProfile = () => {
             {editing ? (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block font-medium text-gray-700">Name</label>
+                  <label htmlFor="name" className="block font-medium text-gray-700 ">Name</label>
                   <input
                     type="text"
                     id="name"
@@ -387,7 +387,7 @@ const UserProfile = () => {
               </form>
             ) : (
               <>
-               <div className='bg-[#ffffffe9]'>
+               <div className='bg-[#ffffffe9] text-center '>
                  <p className="text-xl font-bold font-serif text-gray-700">{user.name}</p>
                <p className="text-lg font-medium text-gray-500">{user.dob}</p></div>
                 {message && (

@@ -52,7 +52,7 @@ const CategoryCard = ({ title, imageUrl, link }) => (
       <h2 className="text-white text-2xl font-bold mb-4">{title}</h2>
       <Link
         to={link}
-        className="bg-[#1c9aa5] text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-[#108592] transition"
+        className="bg-gradient-to-r from-[#0f90c3] to-[#06275f] text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-[#108592] transition"
       >
         Shop Now
       </Link>
@@ -98,7 +98,7 @@ function Home() {
             prescription glasses, and sunglasses. Visit us today to experience the difference."
           </h2>
           <div className="mt-6">
-            <button className="h-14 w-44 bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-white rounded-md mx-auto flex justify-center items-center space-x-2 transition hover:bg-[#0d6990] ">
+            <button className="h-14 w-44 bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-white rounded-md mx-auto flex justify-center items-center space-x-2 transition hover:bg-[#0d6990] hover:translate-x-2 cursor-pointer ">
               <Link to="/SpectacleList">Check Collections</Link>
               <FaArrowUpRightFromSquare className="text-white h-5" />
             </button>
@@ -113,11 +113,11 @@ function Home() {
         <ImageCarousel images={galleryImages} />
       </div>
       <div className="flex flex-col lg:flex-row justify-between items-center">
-        <div className="text-section bg-[#f6f4f3] text-[#2a5735] p-5 h-auto flex flex-col items-center justify-center mx-3">
-          <p className="bg-[#2096aa7d] text-center font-serif rounded-lg p-6 border-2 border-green-900 mb-4">
+        <div className="text-section bg-[#f6f4f3] text-[#f1f2f2] p-5 h-auto flex flex-col items-center justify-center mx-3">
+          <p className="bg-gradient-to-b from-[#0e79a3] to-[#07265e] text-center font-serif rounded-lg p-6 border-2 border-green-900 mb-4 hover:translate-x-3 cursor-pointer">
             Founded in 2024, Zoopiceye was born from a passion to make eyewear accessible to all. We believe glasses are a statement of style, confidence, and personality. Our mission is to provide high-quality, affordable eyewear that helps everyone see the world more clearly.
           </p>
-          <p className="bg-[#2096aa7d] text-center font-serif rounded-lg p-6 border-2 border-green-900">
+          <p className="bg-gradient-to-b from-[#0e79a3] to-[#07265e] text-center font-serif rounded-lg p-6 border-2 border-green-900 hover:translate-x-3 cursor-pointer">
             At Zoopiceye, our mission is simple: to combine vision and fashion with a focus on innovation and sustainability. We prioritize quality, ensuring every pair of spectacles enhances both vision and confidence.
           </p>
         </div>

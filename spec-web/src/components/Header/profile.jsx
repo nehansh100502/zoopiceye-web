@@ -417,7 +417,7 @@ const Profile = () => {
 
   const handleDeleteAccount = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/users/${user._id}`, {
+      await axios.delete(`http://localhost:4000/api/v1/users/${user._id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('userToken')}`, 
         },
@@ -427,7 +427,7 @@ const Profile = () => {
       navigate('/login'); 
     } catch (error) {
       console.error('Error deleting account:', error);
-      alert('There was an error deleting your account. Please try again.');
+      alert('Coming Soon to check your eyes. Please try after this service will enable to use.');
     }
   };
 
@@ -529,14 +529,14 @@ const Profile = () => {
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-lg p-5 text-center">
-            <h3 className="text-lg font-semibold">Delete Account</h3>
-            <p className="mt-2 text-gray-700">Are you sure you want to delete your account? This action cannot be undone.</p>
+            <h3 className="text-lg font-semibold">Eye Checkup</h3>
+            <p className="mt-2 text-gray-700">Are you sure you want to proceed your eye checkup with us zoopiceyeopticals</p>
             <div className="mt-4">
               <button onClick={handleDeleteAccount} className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500 mr-2">
-                Yes, Delete Permanently
+                Yes 
               </button>
               <button onClick={() => setShowModal(false)} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200">
-                Cancel
+                NO
               </button>
             </div>
           </div>

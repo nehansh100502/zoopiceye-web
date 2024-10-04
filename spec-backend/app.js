@@ -13,7 +13,6 @@ if (process.env.NODE_ENV !== "production") {
 const corsOptions = {
     origin: 'http://localhost:5173', // Allow requests from your frontend origin
     credentials: true,               // Allow credentials (cookies, etc.)
-    methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
 

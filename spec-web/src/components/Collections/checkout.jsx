@@ -12,7 +12,6 @@ const CheckoutPage = () => {
   const [userId, setUserId] = useState(null);
   const [userName, setUserName] = useState('');
   const [shippingAddress, setShippingAddress] = useState({
-    phone: '',
     street: '',
     city: '',
     state: '',
@@ -88,7 +87,7 @@ const CheckoutPage = () => {
     if (!shippingAddress.city) validationErrors.city = 'City is required';
     if (!shippingAddress.state) validationErrors.state = 'State is required';
     if (!shippingAddress.zip) validationErrors.zip = 'ZIP Code is required';
-    if (!shippingAddress.phone) validationErrors.phone = 'Phone number is required';
+    // if (!shippingAddress.phone) validationErrors.phone = 'Phone number is required';
 
     setErrors(validationErrors);
     return Object.keys(validationErrors).length === 0;
@@ -161,15 +160,15 @@ const CheckoutPage = () => {
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Shipping Address</h2>
 
         {/* Phone Number */}
-        <input
+        {/* <input
           type="text"
           name="phone"
           placeholder="Phone Number"
           value={shippingAddress.phone}
           onChange={handleInputChange}
           className={`w-full p-2 mb-4 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded`}
-        />
-        {errors.phone && <p className="text-red-500">{errors.phone}</p>}
+        /> */}
+        {/* {errors.phone && <p className="text-red-500">{errors.phone}</p>} */}
 
         <input
           type="text"
@@ -189,9 +188,12 @@ const CheckoutPage = () => {
           className="w-full p-2 mb-4 border border-gray-300 rounded"
         >
           <option value="">Select State</option>
-          <option value="California">California</option>
-          <option value="New York">New York</option>
-          <option value="Texas">Texas</option>
+          <option value="California">Uttar Pradesh</option>
+          <option value="New York">Uttarakhand</option>
+          <option value="Texas">Bihar</option>
+          <option value="Texas">Madhya Pradesh</option>
+          <option value="Texas">Delhi</option>
+
         </select>
         {errors.state && <p className="text-red-500">{errors.state}</p>}
 
@@ -203,9 +205,9 @@ const CheckoutPage = () => {
           className="w-full p-2 mb-4 border border-gray-300 rounded"
         >
           <option value="">Select City</option>
-          <option value="Los Angeles">Los Angeles</option>
-          <option value="New York City">New York City</option>
-          <option value="Houston">Houston</option>
+          <option value="Los Angeles">Prayagraj</option>
+          <option value="New York City">Kanpur</option>
+          <option value="Houston">Lucknow</option>
         </select>
         {errors.city && <p className="text-red-500">{errors.city}</p>}
 

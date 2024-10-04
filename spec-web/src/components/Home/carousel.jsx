@@ -76,7 +76,7 @@ function Carousel() {
           </p>
           <div className="mt-6 flex justify-center">
             <Link to={slides[currentSlide].link}>
-              <button className="h-14 w-48 bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-white rounded-md flex justify-center items-center space-x-2 transition hover:bg-[#0a924c]">
+              <button className="h-14 w-48 bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-white rounded-md flex justify-center items-center space-x-2 transition hover:translate-x-2 cursor-pointer ">
                 {slides[currentSlide].buttonText}
                 <FaArrowUpRightFromSquare className="text-white h-6 ml-2" />
               </button>

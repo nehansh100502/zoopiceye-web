@@ -47,7 +47,7 @@ function Footer() {
         </div>
 
         {/* Divider and Footer Links */}
-        <div className="bg-[#54c9f3]">
+        <div className="bg-[#187ff5]">
           <hr className="border-black border-1" />
           <div className="text-center text-[#fafcffe3] hover:text-blue-600 cursor-pointer">
             <p>Terms & Conditions || Privacy Policy</p>

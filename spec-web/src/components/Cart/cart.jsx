@@ -13,7 +13,7 @@ const Cart = () => {
           <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-center mt-14">Your Cart</h2>
           <p className="mb-4 text-lg">Your cart is empty.</p>
           <Link
-            to="/SpectacleList" // Link to the collection page
+            to="/SpectacleList" 
             className="bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-xl w-60 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-blue-300 mt-4 inline-block"
           >
             Continue Shopping

@@ -1,378 +1,15 @@
-// import React, { useState, useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { useAuth } from '../../AuthContext';
-// import axios from 'axios';
-
-// const Profile = () => {
-//   const { user, logout } = useAuth(); // Ensure that `user` is being fetched correctly from your context
-//   const navigate = useNavigate();
-//   const [orders, setOrders] = useState([]); // Store the list of orders
-//   const [showModal, setShowModal] = useState(false); // State for the confirmation modal
-//   const [showOrders, setShowOrders] = useState(false); // State for order dropdown visibility
-
-//   const handleLogout = () => {
-//     logout();
-//     navigate('/login');
-//   };
-
-//   // Toggle the visibility of the order list
-//   const toggleOrders = () => {
-//     setShowOrders(!showOrders); // Toggle the state
-//   };
-
-//   // Fetch all orders for the logged-in user
-//   useEffect(() => {
-//     const fetchOrders = async () => {
-//       if (!user || !user._id) {
-//         console.error("User ID is missing.");
-//         return;
-//       }
-
-//       // console.log(`Fetching orders from URL: http://localhost:4000/api/v1/orders/user/${user._id}`);
-//       // console.log('Authorization Token:', localStorage.getItem('userToken'));
-
-//       try {
-//         const response = await axios.get(`http://localhost:4000/api/v1/orders/user/${user._id}`, {
-//           headers: {
-//             Authorization: `Bearer ${localStorage.getItem('userToken')}`, // Include authorization header if needed
-//           },
-//         });
-//         setOrders(response.data); // Assuming the response is an array of orders
-//       } catch (err) {
-//         if (err.response) {
-//           console.error("Failed to fetch orders:", err.response.data, "Status:", err.response.status);
-//         } else if (err.request) {
-//           console.error("No response received:", err.request);
-//         } else {
-//           console.error("Error:", err.message);
-//         }
-//       }
-//     };
-
-//     if (user?._id) {
-//       fetchOrders();
-//     }
-//   }, [user._id]);
-
-//   const handleDeleteAccount = async () => {
-//     try {
-//       await axios.delete(`http://localhost:4000/api/v1/users/${user._id}`, {
-//         headers: {
-//           Authorization: `Bearer ${localStorage.getItem('userToken')}`, 
-//         },
-//       });
-//       alert('Your account has been deleted successfully.');
-//       logout(); 
-//       navigate('/login'); 
-//     } catch (error) {
-//       console.error('Error deleting account:', error);
-//       alert('There was an error deleting your account. Please try again.');
-//     }
-//   };
-
-//   return (
-//     <div className='flex flex-col bg-gradient-to-r from-[#0472a9] to-[#0e1211] w-full md:w-[auto] border-4 border-[white] h-[auto] pl-4 pt-4'>
-//       <div className='text-center pt-24'>
-//         {/* <h2 className="text-lg font-semibold mt-3">{user?.username || ""}</h2> */}
-//         {/* <p className="text-sm text-[#06f64ad9]">{user?.email || ""}</p> */}
-//       </div>
-//       <div className="flex flex-col text-[#f6eef6fb]">
-//         <Link
-//           to="/"
-//           className={`flex items-center gap-1 hover:text-white hover:bg-[#189AB4] px-3 py-2 rounded-md transition-all duration-300`}
-//         >
-//           <span>Home</span>
-//         </Link>
-//         <Link
-//           to="/UserProfile"
-//           className={`flex items-center gap-1  hover:text-white hover:bg-[#189AB4] px-3 py-2 rounded-md transition-all duration-300`}
-//         >
-//           <span> My Profile</span>
-//         </Link>
-
-//         {/* Orders Section */}
-//         <div className="">
-//           <h3
-//            className={`flex items-center gap-1  hover:text-white hover:bg-[#18a0b9] px-3 py-2 rounded-md transition-all duration-300 cursor-pointer`}
-//             onClick={toggleOrders} // Toggle order list visibility
-//           >
-//             My Orders
-//           </h3>
-
-//           {showOrders && (
-//             <ul className="bg-gradient-to-r from-[#2f7ea5] to-[#1c9aa5] text-[white] p-2 rounded-md w-44"> 
-//               {orders.length > 0 ? (
-//                 orders.map((order) => (
-//                   <li key={order._id} className="mb-2">
-//                     <Link
-//                       to={`/orders/${order._id}`} // Correctly route to the order details page
-//                       className="text-[yellow] hover:underline"
-//                     >
-//                       {/* Display order number, product name, and order date */}
-
-//                       {order.items.length > 0 && order.items[0].productId ? ` ${order.items[0].productId.name}` : ''}
-//                       {order.orderDate ? ` - Order Date: ${new Date(order.orderDate).toLocaleDateString()}` : ''}
-//                     </Link>
-//                   </li>
-//                 ))
-//               ) : (
-//                 <p>No orders found.</p>
-//               )}
-
-//             </ul>
-//           )}
-//         </div>
-
-//         <Link
-//           to="/spectacleList"
-//           className={`flex items-center gap-1  hover:text-white hover:bg-[#189AB4] px-3 py-2 rounded-md transition-all duration-300`}
-//         >
-//           <span>My Store/Collections</span>
-//         </Link>
-
-//         <Link to="/StoreLocator" className="flex items-center gap-1 hover:text-white hover:bg-[#189AB4] px-3 py-2 rounded-md transition-all duration-300">
-//           <span>Location/Map</span>
-//         </Link>
-
-//         <Link to="/Contact" className="flex items-center gap-1  hover:text-white hover:bg-[#189AB4] px-3 py-2 rounded-md transition-all duration-300">
-//           <span>Contact Us</span>
-//         </Link>
-
-//         <Link to="/About" className="flex items-center gap-1  hover:text-white hover:bg-[#189AB4] px-3 py-2 rounded-md transition-all duration-300">
-//           <span>About Us</span>
-//         </Link>
-
-//         {/* Settings / Delete Account Link */}
-//         <div className="flex items-center gap-1  hover:text-white hover:bg-[#189AB4] px-3 py-2 rounded-md transition-all duration-300 cursor-pointer" onClick={() => setShowModal(true)}>
-//           <span>Account Settings</span>
-//         </div>
-//       </div>
-
-//       <div className='mt-8 mb-5'>
-//         <button
-//           onClick={handleLogout}
-//           className="w-[150px] py-1 hover:bg-red-700  rounded-md transition-all duration-300"
-//         >
-//           Logout
-//         </button>
-//       </div>
-
-//       {/* Confirmation Modal */}
-//       {showModal && (
-//         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-//           <div className="bg-white rounded-lg p-5 text-center">
-//             <h3 className="text-lg font-semibold">Delete Account</h3>
-//             <p className="mt-2 text-gray-700">Are you sure you want to delete your account? This action cannot be undone.</p>
-//             <div className="mt-4">
-//               <button onClick={handleDeleteAccount} className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500 mr-2">
-//                 Yes, Delete Permanently
-//               </button>
-//               <button onClick={() => setShowModal(false)} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200">
-//                 Cancel
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Profile;
-
-
-// import React, { useState, useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { useAuth } from '../../AuthContext';
-// import axios from 'axios';
-
-// const Profile = () => {
-//   const { user, logout } = useAuth(); // Ensure that `user` is being fetched correctly from your context
-//   const navigate = useNavigate();
-//   const [orders, setOrders] = useState([]); // Store the list of orders
-//   const [showModal, setShowModal] = useState(false); // State for the confirmation modal
-//   const [showOrders, setShowOrders] = useState(false); // State for order dropdown visibility
-
-//   const handleLogout = () => {
-//     logout();
-//     navigate('/login');
-//   };
-
-//   // Toggle the visibility of the order list
-//   const toggleOrders = () => {
-//     setShowOrders(!showOrders); // Toggle the state
-//   };
-
-//   // Fetch all orders for the logged-in user
-//   useEffect(() => {
-//     const fetchOrders = async () => {
-//       if (!user || !user._id) {
-//         console.error("User ID is missing.");
-//         return;
-//       }
-
-//       try {
-//         const response = await axios.get(`http://localhost:4000/api/v1/orders/user/${user._id}`, {
-//           headers: {
-//             Authorization: `Bearer ${localStorage.getItem('userToken')}`, // Include authorization header if needed
-//           },
-//         });
-//         setOrders(response.data); // Assuming the response is an array of orders
-//       } catch (err) {
-//         if (err.response) {
-//           console.error("Failed to fetch orders:", err.response.data, "Status:", err.response.status);
-//         } else if (err.request) {
-//           console.error("No response received:", err.request);
-//         } else {
-//           console.error("Error:", err.message);
-//         }
-//       }
-//     };
-
-//     if (user?._id) {
-//       fetchOrders();
-//     }
-//   }, [user._id]);
-
-//   const handleDeleteAccount = async () => {
-//     try {
-//       await axios.delete(`http://localhost:4000/api/v1/users/${user._id}`, {
-//         headers: {
-//           Authorization: `Bearer ${localStorage.getItem('userToken')}`, 
-//         },
-//       });
-//       alert('Your account has been deleted successfully.');
-//       logout(); 
-//       navigate('/login'); 
-//     } catch (error) {
-//       console.error('Error deleting account:', error);
-//       alert('There was an error deleting your account. Please try again.');
-//     }
-//   };
-
-//   return (
-//     <div className='flex flex-col bg-gradient-to-r from-[#0472a9] to-[#0e1211] w-full md:w-[auto] border-4 border-[white] h-[auto] pl-4 pt-4'>
-//       <div className='text-center pt-24'>
-//         {/* <h2 className="text-lg font-semibold mt-3">{user?.username || ""}</h2> */}
-//         {/* <p className="text-sm text-[#06f64ad9]">{user?.email || ""}</p> */}
-//       </div>
-//       <div className="flex flex-col text-[#f6eef6fb]">
-//         <Link
-//           to="/"
-//           className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2`} // Added translate-x-2 for slight movement to the right
-//         >
-//           <span>Home</span>
-//         </Link>
-//         <Link
-//           to="/UserProfile"
-//           className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2`}
-//         >
-//           <span> My Profile</span>
-//         </Link>
-
-//         {/* Orders Section */}
-//         <div className="">
-//           <h3
-//            className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 cursor-pointer hover:translate-x-2`}
-//             onClick={toggleOrders} // Toggle order list visibility
-//           >
-//             My Orders
-//           </h3>
-
-//           {showOrders && (
-//             <ul className="bg-gradient-to-r from-[#2f7ea5] to-[#1c9aa5] text-[white] p-2 rounded-md w-44"> 
-//               {orders.length > 0 ? (
-//                 orders.map((order) => (
-//                   <li key={order._id} className="mb-2">
-//                     <Link
-//                       to={`/orders/${order._id}`} // Correctly route to the order details page
-//                       className="text-[yellow] hover:underline"
-//                     >
-//                       {/* Display order number, product name, and order date */}
-
-//                       {order.items.length > 0 && order.items[0].productId ? ` ${order.items[0].productId.name}` : ''}
-//                       {order.orderDate ? ` - Order Date: ${new Date(order.orderDate).toLocaleDateString()}` : ''}
-//                     </Link>
-//                   </li>
-//                 ))
-//               ) : (
-//                 <p>No orders found.</p>
-//               )}
-
-//             </ul>
-//           )}
-//         </div>
-
-//         <Link
-//           to="/spectacleList"
-//           className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2`}
-//         >
-//           <span>My Store/Collections</span>
-//         </Link>
-
-//         <Link to="/StoreLocator" className="flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
-//           <span>Location/Map</span>
-//         </Link>
-
-//         <Link to="/Contact" className="flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
-//           <span>Contact Us</span>
-//         </Link>
-
-//         <Link to="/About" className="flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
-//           <span>About Us</span>
-//         </Link>
-
-//         {/* Settings / Delete Account Link */}
-//         <div className="flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 cursor-pointer hover:translate-x-2" onClick={() => setShowModal(true)}>
-//           <span>Account Settings</span>
-//         </div>
-//       </div>
-
-//       <div className='mt-8 mb-5'>
-//         <button
-//           onClick={handleLogout}
-//           className="w-[150px] py-1 hover:bg-red-500  text-white rounded-md transition-all duration-300"
-//         >
-//           Logout
-//         </button>
-//       </div>
-
-//       {/* Confirmation Modal */}
-//       {showModal && (
-//         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-//           <div className="bg-white rounded-lg p-5 text-center">
-//             <h3 className="text-lg font-semibold">Delete Account</h3>
-//             <p className="mt-2 text-gray-700">Are you sure you want to delete your account? This action cannot be undone.</p>
-//             <div className="mt-4">
-//               <button onClick={handleDeleteAccount} className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500 mr-2">
-//                 Yes, Delete Permanently
-//               </button>
-//               <button onClick={() => setShowModal(false)} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200">
-//                 Cancel
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Profile;
-
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../AuthContext';
 import axios from 'axios';
-import { FaHome, FaUserAlt, FaBoxOpen, FaStore, FaMapMarkerAlt, FaEnvelope, FaInfoCircle, FaCog } from 'react-icons/fa'; // Import icons from react-icons
+import { FaHome, FaUserAlt, FaBoxOpen, FaStore, FaMapMarkerAlt, FaEnvelope, FaInfoCircle, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const Profile = () => {
-  const { user, logout } = useAuth(); // Ensure that `user` is being fetched correctly from your context
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [orders, setOrders] = useState([]); // Store the list of orders
-  const [showModal, setShowModal] = useState(false); // State for the confirmation modal
-  const [showOrders, setShowOrders] = useState(false); // State for order dropdown visibility
+  const [orders, setOrders] = useState([]);
+  const [showOrders, setShowOrders] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -381,7 +18,7 @@ const Profile = () => {
 
   // Toggle the visibility of the order list
   const toggleOrders = () => {
-    setShowOrders(!showOrders); // Toggle the state
+    setShowOrders(!showOrders);
   };
 
   // Fetch all orders for the logged-in user
@@ -395,18 +32,12 @@ const Profile = () => {
       try {
         const response = await axios.get(`http://localhost:4000/api/v1/orders/user/${user._id}`, {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('userToken')}`, // Include authorization header if needed
+            Authorization: `Bearer ${localStorage.getItem('userToken')}`,
           },
         });
-        setOrders(response.data); // Assuming the response is an array of orders
+        setOrders(response.data);
       } catch (err) {
-        if (err.response) {
-          console.error("Failed to fetch orders:", err.response.data, "Status:", err.response.status);
-        } else if (err.request) {
-          console.error("No response received:", err.request);
-        } else {
-          console.error("Error:", err.message);
-        }
+        console.error("Error fetching orders:", err);
       }
     };
 
@@ -415,133 +46,106 @@ const Profile = () => {
     }
   }, [user._id]);
 
-  const handleDeleteAccount = async () => {
-    try {
-      await axios.delete(`http://localhost:4000/api/v1/users/${user._id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('userToken')}`, 
-        },
-      });
-      alert('Your account has been deleted successfully.');
-      logout(); 
-      navigate('/login'); 
-    } catch (error) {
-      console.error('Error deleting account:', error);
-      alert('Coming Soon to check your eyes. Please try after this service will enable to use.');
-    }
-  };
-
   return (
-    <div className='flex flex-col bg-gradient-to-r from-[#0472a9] to-[#0e1211] w-full md:w-[auto] border-4 border-[white] h-[auto] pl-4 pt-4'>
+    <div className='flex flex-col bg-gradient-to-r from-[#0472a9] to-[#0e1211] w-full md:w-auto border-4 border-white h-auto p-4 pt-4'>
       <div className='text-center pt-24'>
-        {/* <h2 className="text-lg font-semibold mt-3">{user?.username || ""}</h2> */}
-        {/* <p className="text-sm text-[#06f64ad9]">{user?.email || ""}</p> */}
+        {/* User profile details can go here */}
       </div>
-      <div className="flex flex-col text-[#f6eef6fb]">
-        <Link
-          to="/"
-          className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2`}
-        >
-          <FaHome /> {/* Home icon */}
+
+      <div className="flex flex-col text-white">
+        <Link to="/" className='flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2'>
+          <FaHome />
           <span>Home</span>
         </Link>
-        <Link
-          to="/UserProfile"
-          className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2`}
-        >
-          <FaUserAlt /> {/* User Profile icon */}
+
+        <Link to="/UserProfile" className='flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2'>
+          <FaUserAlt />
           <span>My Profile</span>
         </Link>
 
-        {/* Orders Section */}
-        <div className="">
-          <h3
-            className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 cursor-pointer hover:translate-x-2`}
-            onClick={toggleOrders} // Toggle order list visibility
+        {/* Orders Section with Dropdown */}
+        <div className="relative">
+          <div
+            className='flex items-center justify-between gap-2 px-3 py-2 rounded-md transition-all duration-300 cursor-pointer hover:translate-x-2'
+            onClick={toggleOrders}
           >
-            <FaBoxOpen /> {/* Orders icon */}
-            My Orders
-          </h3>
+            <span className="flex items-center gap-2">
+              <FaBoxOpen />
+              My Orders
+            </span>
+            {showOrders ? <FaChevronUp /> : <FaChevronDown />}
+          </div>
 
+          {/* Dropdown List */}
           {showOrders && (
-            <ul className="bg-gradient-to-r from-[#2f7ea5] to-[#1c9aa5] text-[white] p-2 rounded-md w-44"> 
+            <ul className="absolute left-0 mt-2 bg-gradient-to-r from-[#2f7ea5] to-[#1c9aa5] text-white p-4 rounded-md w-full z-10 shadow-lg max-h-[200px] overflow-auto sm:max-h-[400px]">
               {orders.length > 0 ? (
                 orders.map((order) => (
-                  <li key={order._id} className="mb-2">
+                  <li key={order._id} className="mb-2 p-2 bg-[#03394a] rounded-md">
                     <Link
-                      to={`/orders/${order._id}`} // Correctly route to the order details page
-                      className="text-[yellow] hover:underline"
+                      to={`/orders/${order._id}`}
+                      className="text-yellow-300 hover:underline"
                     >
-                      {/* Display order number, product name, and order date */}
+                      {/* Display each product name, quantity, and price */}
+                      {order.items.map((item, index) => (
+                        <div key={index}>
+                          {/* Assuming `productId` contains product details */}
+                          {item.productId?.name && (
+                            <div>
+                              <strong>Product:</strong> {item.productId.name}
+                            </div>
+                          )}
+                          <div>
+                            <strong>Quantity:</strong> {item.quantity}
+                          </div>
+                          <div>
+                            <strong>Price:</strong> ${item.price.toFixed(2)}
+                          </div>
+                        </div>
+                      ))}
+                      <div>
+                        <strong>Order Date:</strong> {new Date(order.createdAt).toLocaleDateString()}
+                      </div>
 
-                      {order.items.length > 0 && order.items[0].productId ? ` ${order.items[0].productId.name}` : ''}
-                      {order.orderDate ? ` - Order Date: ${new Date(order.orderDate).toLocaleDateString()}` : ''}
                     </Link>
                   </li>
                 ))
               ) : (
-                <p>No orders found.</p>
+                <p className="text-center">No orders found.</p>
               )}
             </ul>
           )}
         </div>
 
-        <Link
-          to="/spectacleList"
-          className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2`}
-        >
-          <FaStore /> {/* Store icon */}
+        <Link to="/spectacleList" className='flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2'>
+          <FaStore />
           <span>My Store/Collections</span>
         </Link>
 
-        <Link to="/StoreLocator" className="flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
-          <FaMapMarkerAlt /> {/* Location/Map icon */}
+        <Link to="/StoreLocator" className="flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
+          <FaMapMarkerAlt />
           <span>Location/Map</span>
         </Link>
 
-        <Link to="/Contact" className="flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
-          <FaEnvelope /> {/* Contact icon */}
+        <Link to="/Contact" className="flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
+          <FaEnvelope />
           <span>Contact Us</span>
         </Link>
 
-        <Link to="/About" className="flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
-          <FaInfoCircle /> {/* About icon */}
+        <Link to="/About" className="flex items-center gap-2 px-3 py-2 rounded-md transition-all duration-300 hover:translate-x-2">
+          <FaInfoCircle />
           <span>About Us</span>
         </Link>
 
-        {/* Settings / Delete Account Link */}
-        <div className="flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-300 cursor-pointer hover:translate-x-2" onClick={() => setShowModal(true)}>
-          <FaCog /> {/* Account Settings icon */}
-          <span>Account Settings</span>
+        <div className='mt-2 mb-5'>
+          <button
+            onClick={handleLogout}
+            className="w-[150px] py-1 hover:bg-red-700 bg-red-600 text-white rounded-md transition-all duration-300"
+          >
+            Logout
+          </button>
         </div>
       </div>
-
-      <div className='mt-8 mb-5'>
-        <button
-          onClick={handleLogout}
-          className="w-[150px] py-1 hover:bg-red-700  rounded-md transition-all duration-300"
-        >
-          Logout
-        </button>
-      </div>
-
-      {/* Confirmation Modal */}
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-5 text-center">
-            <h3 className="text-lg font-semibold">Eye Checkup</h3>
-            <p className="mt-2 text-gray-700">Are you sure you want to proceed your eye checkup with us zoopiceyeopticals</p>
-            <div className="mt-4">
-              <button onClick={handleDeleteAccount} className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500 mr-2">
-                Yes 
-              </button>
-              <button onClick={() => setShowModal(false)} className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200">
-                NO
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

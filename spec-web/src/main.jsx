@@ -166,14 +166,14 @@ const router = createBrowserRouter([
       { path: 'LoyaltyProgram', element: <LoyaltyProgram /> },
       { path: 'Quiz', element: <Quiz /> },
       { path: 'Model', element: <Model /> },
-      { path: 'orders/:orderId', element: <OrderDetails /> },  // Updated to use dynamic parameter
+      { path: 'orders/:orderId', element: <OrderDetails /> },  
       { path: 'About', element: <About /> },
       { path: 'Carousel', element: <Carousel /> },
       { path: 'Checkout', element: <Checkout /> },
       { path: 'Blog', element: <Blog /> },
       { path: 'OrderList', element: <OrderList /> },
       { path: 'FetchOrder', element: <FetchOrderButton /> },
-      { path: 'orders/:orderId', element: <OrderConfirmation /> },  // Adjust if this is redundant
+      { path: 'orders/:orderId', element: <OrderConfirmation /> },  
       { path: 'payment-method/:orderId', element: <PaymentMethod /> },
       { path: 'imageCarousel', element: <ImageCarousel /> },
       { path: 'Book-Slot', element: <BookSlot /> },
@@ -188,13 +188,11 @@ const router = createBrowserRouter([
           </ErrorBoundary>
         ),
       },
-      // Catch-all route for 404 handling
       { path: '*', element: <div>404 Not Found</div> },
     ],
   },
 ]);
 
-// Render the application
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>

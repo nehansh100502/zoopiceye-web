@@ -6,10 +6,8 @@ function Footer() {
   return (
     <>
       <footer className="bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-[#f8fbf8] cursor-pointer">
-        {/* Container for the footer */}
         <div className="container mx-auto px-6 py-10">
           <div className="flex flex-col items-center justify-center md:flex-row md:justify-between">
-            {/* Logo Section */}
             <div className="mb-8 md:mb-0 flex flex-col items-center">
               <img src={logo} alt="logo" className="h-32 w-32 md:h-48 md:w-48 mb-4" />
               <h2 className="text-xl font-bold text-center">Zoopiceye Eyewear</h2>

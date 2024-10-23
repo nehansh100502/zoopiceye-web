@@ -2,7 +2,6 @@ const UserProfile = require('../models/userProfile');
 const path = require('path');
 const fs = require('fs');
 
-// Controller for updating or creating user profile
 exports.updateProfile = async (req, res) => {
   const { name, dob } = req.body;
   // let profilePicPath = '';
@@ -11,8 +10,6 @@ exports.updateProfile = async (req, res) => {
   if (req.file) {
     // Store profile picture in 'uploads' folder
     const uploadDir = path.join(__dirname, '..', 'uploads');
-    
-    // Ensure the uploads directory exists
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir);
     }
@@ -29,11 +26,10 @@ exports.updateProfile = async (req, res) => {
   }
 
   try {
-    // Check if user exists and update the profile, otherwise create a new one
     let user = await UserProfile.findOneAndUpdate(
-      { name }, // Find by name or other unique identifier like `userId`
+      { name },
       { name, dob,},
-      { new: true, upsert: true } // Create new if not exists
+      { new: true, upsert: true } 
     );
 
     // Respond with the updated or created user profile

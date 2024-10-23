@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios"; // Assuming you'll use axios for API requests
+import axios from "axios"; 
 
 const LoyaltyProgram = () => {
   const [userPoints, setUserPoints] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // Fetch user points from the API (replace with your actual API)
   useEffect(() => {
     const fetchUserPoints = async () => {
       try {
-        const response = await axios.get("https://api.example.com/user/loyalty-points"); // Replace with actual API
+        const response = await axios.get("https://api.example.com/user/loyalty-points");
         setUserPoints(response.data.points);
       } catch (error) {
         console.error("Error fetching user points:", error);
@@ -23,20 +22,16 @@ const LoyaltyProgram = () => {
     fetchUserPoints();
   }, []);
 
-  // Function to redeem points for a discount
   const redeemPoints = async () => {
     try {
       const response = await axios.post("https://api.example.com/user/redeem-points", {
         pointsToRedeem: userPoints,
-      }); // Replace with actual API
-
-      // Assuming the API returns the discount amount
+      }); 
       setDiscount(response.data.discount);
     } catch (error) {
       console.error("Error redeeming points:", error);
     }
   };
-
   return (
     <div className="bg-gray-100 py-12 px-6">
       <div className="container mx-auto text-center">

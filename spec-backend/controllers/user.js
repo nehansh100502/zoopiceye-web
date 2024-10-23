@@ -43,9 +43,7 @@ exports.Signup = [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-
         let { username, email, password, phone } = req.body;
-
         try {
             console.log('Signup request body:', req.body);  // Debugging
 
@@ -54,7 +52,6 @@ exports.Signup = [
             if (existingUser) {
                 return res.status(400).json({ message: 'Email already exists' });
             }
-
             // Check if the username already exists
             const existingUsername = await User.findOne({ username });
             if (existingUsername) {
@@ -247,29 +244,6 @@ exports.GetUserProfile = async (req, res) => {
     }
 };
 
-
-// exports.GetUserProfile = async (req, res) => {
-//     try {
-//         const user = await User.findById(req.user._id).select('username email');
-//         if (!user) {
-//             return res.status(404).json({ success: false, message: 'User not found' });
-//         }
-
-//         res.json({ 
-//             success: true, 
-//             user: {
-//                 _id: user._id,
-//                 username: user.username,
-//                 email: user.email
-//             }
-//         });
-//     } catch (error) {
-//         console.error('Error fetching user profile:', error);
-//         res.status(500).json({ success: false, message: 'Server Error' });
-//     }
-// };
-
-
 exports.GetUserDetails = async (req, res) => {
     try {
         // Extract the user ID from the authenticated user
@@ -304,45 +278,6 @@ exports.GetUserDetails = async (req, res) => {
         res.status(500).json({ success: false, message: 'Server Error' });
     }
 };
-
-
-
-// exports.GetUserDetails = async (req, res) => {
-//     try {
-//         // Ensure the user ID is extracted correctly
-//         const userId = req.user ? req.user._id : null;
-
-//         if (!userId) {
-//             return res.status(401).json({ error: 'Unauthorized: No user ID available' });
-//         }
-
-//         // Fetch user data (username, email)
-//         const user = await User.findById(userId).select('username email');
-//         if (!user) {
-//             return res.status(404).json({ error: 'User not found' });
-//         }
-
-//         // Fetch user's orders (adjust based on your schema)
-//         const orders = await Order.find({ userId: userId })
-//                                   .select('orderDetails createdAt')
-//                                   .lean();  // Optional: converts the Mongoose documents to plain objects
-
-//         // Return the user's profile along with their orders
-//         res.json({
-//             success: true,
-//             user: {
-//                 _id: user._id,
-//                 username: user.username,
-//                 email: user.email,
-//                 orders: orders,  // Attach the orders here
-//             },
-//         });
-//     } catch (error) {
-//         console.error('Error fetching user details:', error.message);
-//         res.status(500).json({ success: false, message: 'Server Error' });
-//     }
-// };
-
 // Delete User Account Function
 exports.DeleteUserAccount = async (req, res) => {
     try {

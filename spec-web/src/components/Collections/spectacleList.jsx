@@ -511,7 +511,7 @@ const SpectacleList = () => {
     selectedPriceRange,
     selectedFrameMaterial,
     selectedFrameShape,
-    selectedColor, // Add selectedColor to dependencies
+    selectedColor, 
     spectacles,
   ]);
   // Typewriter effect states
@@ -520,7 +520,6 @@ const SpectacleList = () => {
   const [typingIndex, setTypingIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
-  // Messages for the typewriter effect
   const messages = [
     "Discover the Latest Trends: Shop Zoopiceye Collections",
     "Curated Collections for Every Occasion",
@@ -533,7 +532,6 @@ const SpectacleList = () => {
     "Premium Collections at Unbeatable Prices"
   ];
 
-  // Function to handle the typewriter effect
   useEffect(() => {
     if (isTyping) {
       if (typingIndex < messages[currentMessageIndex].length) {
@@ -542,15 +540,15 @@ const SpectacleList = () => {
             (prev) => prev + messages[currentMessageIndex].charAt(typingIndex)
           );
           setTypingIndex(typingIndex + 1);
-        },0); // Adjust typing speed here (100ms delay)
+        },100); 
       } else {
-        setIsTyping(false); // Stop typing when message is complete
+        setIsTyping(false); 
         setTimeout(() => {
           setIsTyping(true);
           setTypingIndex(0);
           setDisplayedMessage("");
           setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
-        }, 1000); // Delay before showing the next message (3 seconds)
+        }, 1000); 
       }
     }
   }, [isTyping, typingIndex, currentMessageIndex]);
@@ -567,22 +565,22 @@ const SpectacleList = () => {
       <div className=" h-6 w-full left-0 right-0 z-50">
       <div className="message-container1 h-6 w-full text-center bg-gradient-to-r from-[#eded12] via-[#158392] to-[#e70cd8] text-transparent bg-clip-text">
         <span className="text-xl">{displayedMessage}</span>
-        <span className="blinking-cursor">|</span> {/* Blinking cursor */}
+        <span className="blinking-cursor">|</span>
       </div>
       </div>
       <div className="pt-20 pl-4 w-full flex flex-col lg:flex-row gap-6 bg-[#f5f9f9]">
         {/* Filters */}
         <div className="w-full lg:w-fit bg-[#eff3f3c6] text-[#278099] p-4 rounded-lg shadow-lg border border-gray-200 h-auto lg:h-[100px] flex flex-col">
           <div className="w-full lg:w-fit bg-gradient-to-b from-[#0fb4bd] to-[#045df8] text-[#fffefee1] p-4 rounded-lg shadow-lg border border-gray-200 h-auto lg:h-[1350px] flex flex-col">
-            <h4 className="text-sm lg:text-lg font-bold mb-2">Filter By</h4> {/* Smaller font for mobile */}
+            <h4 className="text-sm lg:text-lg font-bold mb-2">Filter By</h4> 
             <div className="mb-4"></div>
 
             {/* Category Filter */}
             <div className="mb-4">
-              <h5 className="text-xs lg:text-sm font-semibold mb-1">Category</h5> {/* Smaller font for mobile */}
+              <h5 className="text-xs lg:text-sm font-semibold mb-1">Category</h5> 
               <div className="space-y-1">
                 {['eyeglasses', 'sunglasses', 'contactlens'].map(category => (
-                  <label key={category} className="flex items-center hover:text-[#7ffc46] text-xs lg:text-sm"> {/* Smaller font for mobile */}
+                  <label key={category} className="flex items-center hover:text-[#7ffc46] text-xs lg:text-sm">
                     <input
                       type="radio"
                       value={category}
@@ -702,9 +700,9 @@ const SpectacleList = () => {
               <SpectacleCard
                 key={spectacle._id}
                 spectacle={spectacle}
-                isSelected={selectedSpectacle === spectacle._id} // Pass selected state
-                onSelect={() => setSelectedSpectacle(spectacle._id)} // Set selected spectacle
-                className="text-xs lg:text-sm " // Add class for smaller text
+                isSelected={selectedSpectacle === spectacle._id} 
+                onSelect={() => setSelectedSpectacle(spectacle._id)} 
+                className="text-xs lg:text-sm " 
               />
             ))
           ) : (

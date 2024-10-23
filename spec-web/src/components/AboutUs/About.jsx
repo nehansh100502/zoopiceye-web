@@ -90,7 +90,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-<OurTeam/>
+        <OurTeam/>
         {/* Call to Action */}
         <div className="text-center">
           <h2 className="text-4xl font-bold text-[#24939d] mb-6">Join the Zoopiceye Family</h2>

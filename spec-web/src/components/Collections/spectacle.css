@@ -18,6 +18,5 @@
 @media (min-width: 768px) {
     .message-text1 {
         font-size: 30px;
-        /* Larger text size for larger screens */
     }
 }

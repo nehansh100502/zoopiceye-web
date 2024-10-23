@@ -103,15 +103,15 @@
 
   .text-section {
     padding: 2rem; /* Adjust padding for smaller screens */
-    font-size: 0.875rem; /* Smaller font size for mobile */
+    font-size: 0.875rem; 
   }
 
   .text-section p {
-    margin-bottom: 1rem; /* Adjust margin for spacing between paragraphs */
+    margin-bottom: 1rem;
   }
 
   .image-section {
-    margin-top: 2rem; /* Space between text and image */
+    margin-top: 2rem;
   }
 
   .image-section img {

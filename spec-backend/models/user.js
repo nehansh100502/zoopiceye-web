@@ -10,17 +10,17 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-      
+
         unique: true
-      },
-      dob: {
+    },
+    dob: {
         type: Date,
-       
-      },
-      profilePic: {
-        type: String, // File path or URL for the profile picture
+
+    },
+    profilePic: {
+        type: String,
         default: ''
-      },
+    },
     email: {
         type: String,
         required: true,
@@ -34,8 +34,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate: {
-            validator: function(v) {
-                return /^\d{10}$/.test(v);  // Validates that phone is a 10-digit number
+            validator: function (v) {
+                return /^\d{10}$/.test(v);  
             },
             message: props => `${props.value} is not a valid 10-digit phone number!`
         }
@@ -57,10 +57,12 @@ const userSchema = new mongoose.Schema({
             type: Date
         },
         profilePic: {
-            type: String, // File path or URL for the profile picture
+            type: String, 
             default: ''
         }
-    }]
+    }],
+    message: { type: String, },
+    sentAt: { type: Date, default: Date.now } 
 });
 
 // Method to generate an authentication token
@@ -78,17 +80,15 @@ userSchema.statics.findByCredentials = async (email, password) => {
     if (!user) {
         throw new Error(`User with email ${email} not found. Please register or check your email address.`);
     }
-  
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
         throw new Error('Invalid password. Please try again or reset your password.');
     }
-  
+
     return user;
 };
 
 userSchema.index({ email: 1, _id: 1 }); // compound index on email and _id
-
 const User = mongoose.model('User', userSchema);
-
 module.exports = User;

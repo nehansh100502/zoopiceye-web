@@ -11,14 +11,11 @@ const upload = multer({ storage });
 const { body } = require('express-validator');
 const { updateProfile } = require('../controllers/userProfile');
 
-// POST route for signup
 const bcrypt = require('bcrypt');
 
 router.post('/signup', async (req, res) => {
     try {
         const { username, email, password,phone } = req.body;
-
-        // Hash the password before saving
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({ username, email, password: hashedPassword,phone });
 
@@ -35,13 +32,13 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        console.log('Login request body:', req.body);  // Debugging
+        console.log('Login request body:', req.body); 
 
         const user = await User.findByCredentials(req.body.email, req.body.password);
         const token = await user.generateAuthToken();
         res.status(200).json({ message: 'Login successful', user, token });
     } catch (error) {
-        console.error('Login error:', error);  // Debugging
+        console.error('Login error:', error); 
         res.status(400).json({ message: 'Login failed', error: error.message });
     }
 });
@@ -56,14 +53,10 @@ router.post('/logout', authMiddleware, async (req, res) => {
         res.status(500).json({ message: 'Server error', error: error.message });
     }
 });
-
-
-// POST route for forgot password
 router.post('/forgot-password', (req, res, next) => {
     ForgotPassword(req, res, next);
 });
 
-// POST route for reset password
 router.post('/reset-password/:resetToken', (req, res, next) => {
     ResetPassword(req, res, next);
 });
@@ -74,10 +67,9 @@ router.get('/user/Details', authMiddleware, GetUserDetails);
 
 router.get('/user/delete/:userId', DeleteUserAccount);
 
-// API Route to update or create user profile
 router.post(
     '/updateProfile',
-    upload.single('profilePic'), // Handle file upload for profile picture
+    upload.single('profilePic'), 
     [
       body('name').notEmpty().withMessage('Name is required'),
       body('dob').isDate().withMessage('Date of birth must be a valid date'),

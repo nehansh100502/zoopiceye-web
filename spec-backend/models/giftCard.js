@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const giftCardSchema = new mongoose.Schema({
-    code: { type: String, required: true, unique: true }, // Unique gift card code
+    code: { type: String, required: true, unique: true },
     balance: { type: Number, required: true }, 
     expirationDate: { type: Date }, 
     isActive: { type: Boolean, default: true }, 

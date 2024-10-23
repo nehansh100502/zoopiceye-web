@@ -38,9 +38,9 @@ function Carousel() {
       setCurrentSlide((prevSlide) =>
         prevSlide === slides.length - 1 ? 0 : prevSlide + 1
       );
-    }, 5000); // Change slide every 5 seconds
+    }, 5000); 
 
-    return () => clearInterval(slideInterval); // Cleanup interval on unmount
+    return () => clearInterval(slideInterval); 
   }, []);
 
   const handleNextSlide = () => {

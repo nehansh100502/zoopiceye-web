@@ -6,8 +6,8 @@ const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [success, setSuccess] = useState(false); // State for success message
-  const [error, setError] = useState(''); // State for error message (optional)
+  const [success, setSuccess] = useState(false); 
+  const [error, setError] = useState(''); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,21 +28,21 @@ const Contact = () => {
       });
   
       if (response.ok) {
-        setSuccess(true); // Set success to true if response is OK
-        setError(''); // Clear any error
-        setName(''); // Clear form fields
+        setSuccess(true); 
+        setError('');
+        setName(''); 
         setEmail('');
         setMessage('');
       } else {
         setSuccess(false);
-        setError('Failed to send message. Please try again.'); // Set error message
+        setError('Failed to send message. Please try again.'); 
       }
 
       const result = await response.json();
-      console.log(result); // Optional: log the result
+      console.log(result); 
     } catch (error) {
       console.error('Error:', error);
-      setError('An error occurred. Please try again.'); // Show error message if the request fails
+      setError('An error occurred. Please try again.'); 
     }
   };
 
@@ -62,8 +62,6 @@ const Contact = () => {
               We’d love to hear from you! Please fill out the form below.
             </p>
           </div>
-
-          {/* Show success message if form was submitted successfully */}
           {success && (
             <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
               <strong className="font-bold">Success!</strong>

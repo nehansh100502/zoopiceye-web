@@ -107,7 +107,7 @@ const Blog = () => {
           >
             Shop Now
           </Link>
-         <span> <FaSmile className="text-yellow-500 text-3xl ml-32 mt-10" /> </span>
+         {/* <span> <FaSmile className="text-yellow-500 text-3xl ml-32 mt-10" /> </span> */}
     
         </div>
       </div>

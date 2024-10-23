@@ -3,16 +3,14 @@ import React, { useState, useEffect } from 'react';
 const ImageCarousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Function to go to the next image
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  // Set interval for automatic scrolling
   useEffect(() => {
-    const interval = setInterval(nextImage, 3000); // Change image every 3 seconds
+    const interval = setInterval(nextImage, 3000); 
 
-    return () => clearInterval(interval); // Clear interval on unmount
+    return () => clearInterval(interval); 
   }, []);
 
   return (

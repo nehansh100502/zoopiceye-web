@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Define the user profile schema
 const userProfileSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -11,10 +10,9 @@ const userProfileSchema = new mongoose.Schema({
     required: true,
   },
   profilePic: {
-    type: String, // This will store the file path or URL to the uploaded image
+    type: String, 
   },
-}, { timestamps: true }); // Optional: Adds createdAt and updatedAt timestamps
+}, { timestamps: true }); 
 
-// Create and export the model
 const UserProfile = mongoose.model('UserProfile', userProfileSchema);
 module.exports = UserProfile;

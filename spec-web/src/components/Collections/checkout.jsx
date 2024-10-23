@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../AuthContext'; // Make sure this context provides user details
+import { useAuth } from '../../AuthContext';
 import { useOrder } from '../../orderContext';
 import axios from 'axios';
 
 const CheckoutPage = () => {
-  const { cart, removeFromCart, user } = useAuth(); // Make sure to extract user from context
+  const { cart, removeFromCart, user } = useAuth(); 
   const { setOrderId } = useOrder();
   const [discountAmount, setDiscountAmount] = useState(0);
   const [giftCardAmount, setGiftCardAmount] = useState(0);
@@ -18,9 +18,9 @@ const CheckoutPage = () => {
     zip: '',
   });
   const [errors, setErrors] = useState({});
-  const [paymentMethod, setPaymentMethod] = useState('Credit Card'); // Default payment method
+  const [paymentMethod, setPaymentMethod] = useState('Credit Card');
   const [loading, setLoading] = useState(true);
-  const [paymentMethods, setPaymentMethods] = useState([]); // Added state for payment methods
+  const [paymentMethods, setPaymentMethods] = useState([]); 
   const navigate = useNavigate();
 
   const fetchUserDetails = async (token) => {
@@ -121,7 +121,7 @@ const CheckoutPage = () => {
       discountAmount,
       giftCardAmount,
       shippingAddress,
-      paymentMethod, // Use the selected payment method
+      paymentMethod, 
     };
 
     try {

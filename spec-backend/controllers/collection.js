@@ -1,16 +1,13 @@
 const Spectacle = require('../models/collection');
 
-
 const getSpectacles = async (req, res) => {
   try {
     const { gender, price, category, frameShape, frameMaterial } = req.query;
     const filters = {};
-
     if (gender) filters.gender = gender;
     if (category) filters.category = category;
     if (frameShape) filters.frameShape = frameShape; // Added frameShape filter
     if (frameMaterial) filters.frameMaterial = frameMaterial; // Added frameMaterial filter
-
     if (price) {
       const priceRange = price.split('-');
       filters.price = {
@@ -41,42 +38,6 @@ const getSpectacleById = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-// const addSpectacle = async (req, res) => {
-//   try {
-//     const colors = JSON.parse(req.body.colors.trim());
-//     const { name, gender, price, category, description, stock, frameShape, frameMaterial, discount, isDiscountActive,  } = req.body;
-
-//     if (!req.files || req.files.length === 0) {
-//       return res.status(400).json({ message: 'Please upload at least one image' });
-//     }
-
-//     const images = req.files.map(file => file.filename);
-//     const imageUrls = images.map(filename => `/uploads/${filename}`);
-//     const sku = `SKU${Date.now()}-${Math.floor(Math.random() * 10000)}`;
-
-//     const newSpectacle = new Spectacle({
-//       name,
-//       gender,
-//       price,
-//       category,
-//       frameShape,  
-//       frameMaterial,  
-//       images: imageUrls,
-//       description,
-//       stock,
-//       sku,
-//       discount,
-//       isDiscountActive,
-//       colors // Include colors as part of the spectacle
-//     });
-
-//     await newSpectacle.save();
-//     res.status(201).json(newSpectacle);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// };
 
 const addSpectacle = async (req, res) => {
   try {

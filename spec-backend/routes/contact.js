@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Contact = require('../models/contact');
 
-// POST: Create a new contact entry (handle form submission)
 router.post('/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -20,7 +19,6 @@ router.post('/contact', async (req, res) => {
   }
 });
 
-// GET: Retrieve all contact entries
 router.get('/contact', async (req, res) => {
   try {
     const contacts = await Contact.find();

@@ -1,41 +1,39 @@
 import React from 'react';
 
-// Import images from assets
-import johnDoeImage from '../../assets/spec03.jpg'; // Replace with actual image path
-import janeSmithImage from '../../assets/nehaprofilepic.jpeg'; // Replace with actual image path
-import aliceJohnsonImage from '../../assets/spec05.jpg'; // Replace with actual image path
-import michaelBrownImage from '../../assets/spec06.jpg'; // Replace with actual image path
-import emilyDavisImage from '../../assets/spec01.jpg'; // Replace with actual image path
+import johnDoeImage from '../../assets/spec03.jpg';
+import janeSmithImage from '../../assets/nehaprofilepic.jpeg'; 
+import aliceJohnsonImage from '../../assets/spec05.jpg'; 
+import michaelBrownImage from '../../assets/spec06.jpg'; 
+import emilyDavisImage from '../../assets/spec01.jpg'; 
 
-// Sample team member data
 const teamMembers = [
   {
     id: 1,
     name: "Piyush Singh",
     role: "Founder & CEO",
-    image: johnDoeImage, // Use imported image
+    image: johnDoeImage, 
     description: "Piyush has over 2 years of experience in the tech industry and is passionate about innovation."
   },
   {
     id: 2,
     name: "Neha Singh",
     role: "Full Stack Developer",
-    image: janeSmithImage, // Use imported image
+    image: janeSmithImage, 
     description: "The developer responsible for the development of this e-commerce website."
   },
   {
     id: 3,
     name: "Alice Johnson",
     role: "Head of Marketing",
-    image: aliceJohnsonImage, // Use imported image
+    image: aliceJohnsonImage,
     description: "Alice has a knack for creating compelling marketing strategies that resonate with customers."
   },
-  // Uncomment this section if you want to add Michael Brown back
+  
   {
     id: 4,
     name: "Michael Brown",
     role: "Product Manager",
-    image: michaelBrownImage, // Use imported image
+    image: michaelBrownImage,
     description: "Michael ensures that our products meet customer needs and align with the company's vision."
   },
 ];

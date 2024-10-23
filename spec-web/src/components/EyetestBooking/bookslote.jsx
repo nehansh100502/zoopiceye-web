@@ -4,7 +4,7 @@ import { FaHeadset } from 'react-icons/fa';
 function bookslote() {
   return (
    <div className='text-center'>
-     <div className='mt-40 text-4xl font-bold text-[#ff0000] text-center mb-11 font-serif'>Comming Soon</div>
+     <div className='mt-40 text-4xl font-bold text-[#ff0000] text-center mb-11 font-serif'>Coming Soon</div>
  
 
  <div className="flex ml-72">

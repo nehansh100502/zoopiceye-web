@@ -14,7 +14,7 @@ const RecommendedProducts = () => {
     const fetchProducts = async () => {
       try {
         // Replace with your actual API endpoint
-        const response = await axios.get("https://api.example.com/spectacles");
+        const response = await axios.get("http://localhost:4000/api/v1/spectacles");
         const products = response.data;
 
         // Filter products based on user's browsing history

@@ -131,6 +131,7 @@ const CheckoutPage = () => {
         localStorage.setItem('orderData', JSON.stringify(response.data.order));
         alert('Order created successfully');
         navigate(`/payment-method/${response.data.order._id}`);
+
       } else {
         alert(response.data.message || 'Failed to create the order.');
       }

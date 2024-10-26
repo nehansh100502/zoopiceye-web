@@ -18,7 +18,9 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-google-maps/api": "^2.19.3",
     "axios": "^1.7.5",
+    "clsx": "^2.1.1",
     "face-api.js": "^0.22.2",
+    "framer-motion": "^11.11.9",
     "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.416.0",
@@ -30,6 +32,7 @@
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.12",
+    "tailwind-merge": "^2.5.4",
     "tailwind-scrollbar-hide": "^1.1.7",
     "uuid": "^10.0.0"
   },

@@ -17,11 +17,17 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/uploads', (req, res, next) => {
-    console.log('Serving file:', req.url);
-    next();
-  }, express.static('uploads'));
+// app.use('/uploads', (req, res, next) => {
+//     console.log('Serving file:', req.url);
+//     next();
+//   }, express.static('uploads'));
   
+app.use('/uploads', (req, res, next) => {
+    if (!req.url.includes('1727159310812-spec15.jpg')) {  // Change this if you have multiple defaults
+      console.log('Serving file:', req.url);
+    }
+    next();
+  }, express.static(path.join(__dirname, 'uploads')));
 
 const Session = require("./routes/session");
 const User = require("./routes/user");
@@ -33,6 +39,7 @@ const Order = require("./routes/order");
 const UserProfile = require("./routes/userProfile");
 const Contact = require("./routes/contact");
 const Nodemailer = require("./routes/nodemailer");
+const Payment = require("./routes/paymentRoute");
 
 app.use("/api/v1", Session);
 app.use("/api/v1", User);
@@ -44,5 +51,6 @@ app.use("/api/v1", Order);
 app.use("/api/v1", UserProfile);
 app.use("/api/v1", Contact);
 app.use("/api/v1", Nodemailer);
+app.use("/api/v1", Payment);
 
 module.exports = app;

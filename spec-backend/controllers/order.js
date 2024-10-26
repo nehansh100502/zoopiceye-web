@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const Order = require('../models/order');
 const User = require('../models/user');
 const mongoose = require('mongoose');
+const axios = require('axios');
 
 // / Slack Webhook URL
 const webhookUrl = 'https://hooks.slack.com/services/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';
@@ -92,7 +93,7 @@ const createOrder = async (req, res) => {
 
         // Get the current date for the order creation
         const createdAt = new Date();
-        const orderDate = createdAt; // You can also assign a separate `orderDate` if you want
+        const orderDate = createdAt; 
 
         // Create a new order document with the creation date
         const newOrder = new Order({
@@ -101,12 +102,12 @@ const createOrder = async (req, res) => {
             totalAmount,
             discountAmount: discountAmount || 0,
             giftCardAmount: giftCardAmount || 0,
-            status: 'Pending', // Initial status
+            status: 'Pending',
             shippingAddress,
             paymentMethod,
             estimatedDelivery,
-            createdAt, // Save the creation date
-            orderDate,  // Explicitly add orderDate if needed
+            createdAt, 
+            orderDate, 
         });
 
         // Save the order to the database
@@ -125,16 +126,15 @@ const createOrder = async (req, res) => {
 
         // Ensure the orders array exists
         if (!user.orders) {
-            user.orders = []; // Initialize the orders array if it doesn't exist
+            user.orders = []; 
         }
 
-        user.orders.push(savedOrder._id); // Add the new order ID to the user's orders array
-        await user.save(); // Save the updated user document
+        user.orders.push(savedOrder._id); 
+        await user.save(); 
 
         // Send Slack notification with order details
         await sendSlackNotification(savedOrder);
 
-        // Send a success response with the saved order details
         return res.status(201).json({
             success: true,
             message: 'Order created successfully',
@@ -159,8 +159,8 @@ const getOrdersByUserId = async (req, res) => {
     try {
         // Find orders by userId and populate the 'items.productId' field to get the product details including SKU
         const orders = await Order.find({ userId: userId })
-            .populate('items.productId', 'name sku') // Populate both 'name' and 'sku' fields
-            .sort({ createdAt: -1 }); // Sort by creation date (or orderDate if used)
+            .populate('items.productId', 'name sku') 
+            .sort({ createdAt: -1 });
 
         if (!orders || orders.length === 0) {
             return res.status(404).json({ message: 'No orders found for this user' });
@@ -201,46 +201,49 @@ const getOrdersByUserId = async (req, res) => {
 //         res.status(500).json({ message: 'Error fetching orders', error });
 //     }
 // };
-
-  
 const getOrder = async (req, res) => {
     const { orderId } = req.params;
-
+  
     if (!mongoose.Types.ObjectId.isValid(orderId)) {
-        return res.status(400).json({ message: 'Invalid order ID' });
+      return res.status(400).json({ message: 'Invalid order ID' });
     }
-
+  
     try {
-        // Populate the 'userId' and 'items.productId' with 'sku' and 'name'
-        const order = await Order.findById(orderId)
-            .populate('userId')
-            .populate('items.productId', 'name sku'); // Populate 'name' and 'sku' fields
-
-        if (!order) {
-            return res.status(404).json({ message: 'Order not found' });
-        }
-
-        res.status(200).json(order);
+      // Populate the 'userId' and 'items.productId' with 'sku' and 'name'
+      const order = await Order.findById(orderId)
+        .populate('userId')
+        .populate({
+          path: 'items.productId', // Assuming items.productId references the Product model
+          select: 'name sku', // Select the 'name' and 'sku' fields from the Product
+        });
+  
+      if (!order) {
+        return res.status(404).json({ message: 'Order not found' });
+      }
+  
+      res.status(200).json(order);
     } catch (error) {
-        console.error('Error fetching order:', error);
-        res.status(500).json({ message: 'Server error' });
+      console.error('Error fetching order:', error);
+      res.status(500).json({ message: 'Server error' });
     }
-};
+  };
+  
 
-// Cancel an order
+// Backend function to handle order cancellation
 const cancelOrder = async (req, res) => {
-    const { id } = req.params; // Ensure this matches the route parameter name
+    const { id } = req.params; 
     try {
-        const order = await Order.findByIdAndUpdate(id, { status: 'Cancelled' }, { new: true });
-        if (!order) {
-            return res.status(404).json({ message: 'Order not found' });
-        }
-        res.status(200).json(order);
+      const order = await Order.findByIdAndUpdate(id, { status: 'Cancelled' }, { new: true });
+      if (!order) {
+        return res.status(404).json({ message: 'Order not found' });
+      }
+      res.status(200).json(order);
     } catch (error) {
-        console.error('Error canceling order:', error);
-        res.status(500).json({ message: 'Internal Server Error' });
+      console.error('Error canceling order:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
     }
-};
+  };
+  
 
 module.exports = {
     createOrder,

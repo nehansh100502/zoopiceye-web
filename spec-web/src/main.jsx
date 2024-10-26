@@ -140,6 +140,7 @@ import ImageCarousel from './components/Home/imageCarousel.jsx';
 import BookSlot from './components/EyetestBooking/bookslote.jsx';
 import ReviewCard from './components/Home/reviewCard.jsx';
 import OurTeam from './components/AboutUs/ourTeam.jsx';
+import PaymentProcess from './components/Payment/paymentProcess.jsx';
 
 
 const router = createBrowserRouter([
@@ -166,19 +167,21 @@ const router = createBrowserRouter([
       { path: 'LoyaltyProgram', element: <LoyaltyProgram /> },
       { path: 'Quiz', element: <Quiz /> },
       { path: 'Model', element: <Model /> },
-      { path: 'orders/:orderId', element: <OrderDetails /> },  
+      { path: 'orders/:orderId', element: <OrderDetails /> },
       { path: 'About', element: <About /> },
       { path: 'Carousel', element: <Carousel /> },
       { path: 'Checkout', element: <Checkout /> },
       { path: 'Blog', element: <Blog /> },
       { path: 'OrderList', element: <OrderList /> },
       { path: 'FetchOrder', element: <FetchOrderButton /> },
-      { path: 'orders/:orderId', element: <OrderConfirmation /> },  
+      { path: 'orders/:orderId', element: <OrderConfirmation /> },
+      // Corrected PaymentMethod and PaymentProcess route paths
       { path: 'payment-method/:orderId', element: <PaymentMethod /> },
       { path: 'imageCarousel', element: <ImageCarousel /> },
       { path: 'Book-Slot', element: <BookSlot /> },
       { path: 'reviewCard', element: <ReviewCard /> },
       { path: 'Our-Team', element: <OurTeam /> },
+      { path: 'payment-method/:orderId', element: <PaymentProcess /> },  // Corrected route
 
       {
         path: 'StoreLocator',
@@ -192,6 +195,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

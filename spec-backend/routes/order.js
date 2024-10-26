@@ -10,7 +10,7 @@ const {
 router.post('/orders', createOrder);
 router.get('/orders/user/:userId',  getOrdersByUserId);
 router.get('/orders/:orderId',  getOrder);
-router.put('/orders/:orderId/cancel',  cancelOrder);
+router.put('/orders/cancel/:id',  cancelOrder);
 
 module.exports = router;
 

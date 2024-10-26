@@ -1,19 +1,19 @@
 
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Use useNavigate instead
+import { useNavigate } from 'react-router-dom'; 
 
 const WishlistCard = ({ item, onRemove }) => {
-  const navigate = useNavigate(); // Initialize navigate for navigation
+  const navigate = useNavigate(); 
 
   // Handler for navigating to the details page
   const handleViewDetails = () => {
-    navigate(`/SpectacleDetail/${item._id}`); // Navigate to the item details page
+    navigate(`/SpectacleDetail/${item._id}`);
   };
   
   const handleRemoveFromCart = () => {
     if (onRemove) {
-      onRemove(item._id); // Invoke the onRemove function passed as a prop
+      onRemove(item._id); 
     }
   };
 

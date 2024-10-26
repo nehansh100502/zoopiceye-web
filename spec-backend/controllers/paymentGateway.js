@@ -46,3 +46,30 @@
 //     });
 //   }
 // };
+
+// controllers/paymentsController.js
+const Order = require('../models/order');
+
+// Process payment
+exports.processPayment = async (req, res) => {
+  const { orderId, paymentMethod } = req.body;
+
+  try {
+    const order = await Order.findById(orderId);
+    if (!order) {
+      return res.status(404).json({ success: false, message: 'Order not found' });
+    }
+
+    // Here, you would integrate the payment gateway logic
+    // For now, we will assume the payment is successful.
+
+    // Mark the order as paid
+    order.isPaid = true;
+    order.paymentMethod = paymentMethod;
+    await order.save();
+
+    res.status(200).json({ success: true, message: 'Payment processed successfully' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Payment processing failed', error: error.message });
+  }
+};

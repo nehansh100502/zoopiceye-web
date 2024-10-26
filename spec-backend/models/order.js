@@ -28,11 +28,19 @@ const orderSchema = new mongoose.Schema({
     zip: { type: String, required: true },
   },
 
-  // Add Payment Method
+  // // Add Payment Method
+  // paymentMethod: {
+  //   type: String,
+  //   enum: ['Credit Card', 'PayPal', 'Bank Transfer', 'Cash on Delivery'], 
+  //   required: true,
+  // },
   paymentMethod: {
     type: String,
-    enum: ['Credit Card', 'PayPal', 'Bank Transfer', 'Cash on Delivery'], 
-    required: true,
+    default: 'Credit Card',
+  },
+  isPaid: {
+    type: Boolean,
+    default: false,
   },
 
   estimatedDelivery: { type: Date },

@@ -177,6 +177,7 @@ function Home() {
           />
         </div>
       </div>
+      <RecommendedProducts />
       <ReviewCard />
       {/* <VirtualTryOn /> */}
 

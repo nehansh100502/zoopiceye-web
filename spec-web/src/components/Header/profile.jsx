@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../AuthContext';
@@ -84,7 +83,7 @@ const Profile = () => {
                   <li key={order._id} className="mb-2 p-2 bg-[#03394a] rounded-md">
                     <Link
                       to={`/orders/${order._id}`}
-                      className="text-yellow-300 hover:underline"
+                      className="text-white hover:underline"
                     >
                       {/* Display each product name, quantity, and price */}
                       {order.items.map((item, index) => (
@@ -92,19 +91,19 @@ const Profile = () => {
                           {/* Assuming `productId` contains product details */}
                           {item.productId?.name && (
                             <div>
-                              <strong>Product:</strong> {item.productId.name}
+                              <strong>Product: </strong>   {item.productId.name}
                             </div>
                           )}
                           <div>
-                            <strong>Quantity:</strong> {item.quantity}
+                            <strong>Quantity: </strong>   {item.quantity}
                           </div>
                           <div>
-                            <strong>Price:</strong> ${item.price.toFixed(2)}
+                            <strong>Price:</strong>    ${item.price.toFixed(2)}
                           </div>
                         </div>
                       ))}
                       <div>
-                        <strong>Order Date:</strong> {new Date(order.createdAt).toLocaleDateString()}
+                        <strong>Order Date:  </strong> {new Date(order.createdAt).toLocaleDateString()}
                       </div>
 
                     </Link>
@@ -140,7 +139,7 @@ const Profile = () => {
         <div className='mt-2 mb-5'>
           <button
             onClick={handleLogout}
-            className="w-[150px] py-1 hover:bg-red-700 bg-red-600 text-white rounded-md transition-all duration-300"
+            className="w-[150px] py-1 hover:bg-red-700 bg-[#2f96cd] text-white rounded-md transition-all duration-300 border-2 border-spacing-3 border-double border-red-600"
           >
             Logout
           </button>

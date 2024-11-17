@@ -49,7 +49,7 @@ const CheckoutPage = () => {
 
   const fetchUserPaymentMethods = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/v1/users/${userId}/payment-methods`);
+      const response = await axios.get(`https://zoopiceye-opticals.onrender.com/api/v1/users/${userId}/payment-methods`);
       if (response.data.success) {
         setPaymentMethods(response.data.paymentMethods);
       } else {
@@ -125,7 +125,7 @@ const CheckoutPage = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/orders', orderData);
+      const response = await axios.post('https://zoopiceye-opticals.onrender.com/api/v1/orders', orderData);
       if (response.data.success) {
         localStorage.setItem('orderId', response.data.order._id);
         localStorage.setItem('orderData', JSON.stringify(response.data.order));

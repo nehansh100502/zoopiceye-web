@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon spec-backend/server.js",
     "build":"npm install && npm install --prefix spec-web && npm run build --prefix spec-web",
-    "start": "nodemon spec-backend/server.js"
+    "start": "node spec-backend/server.js"
   },
   "author": "neha singh",
   "license": "ISC",

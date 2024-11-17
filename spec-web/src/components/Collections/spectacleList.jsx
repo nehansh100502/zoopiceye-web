@@ -435,7 +435,7 @@ const SpectacleCard = ({ spectacle, isSelected, onSelect }) => {
               >
                 {isWishlisted ? <FaHeart size={20} /> : <FaRegHeart size={20} />}
               </button>
-              <button
+             <button
                 onClick={(event) => {
                   event.stopPropagation(); // Prevent event bubbling to card click
                   handleShopNow();

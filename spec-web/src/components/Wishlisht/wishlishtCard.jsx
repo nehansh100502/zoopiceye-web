@@ -23,8 +23,8 @@ const WishlistCard = ({ item, onRemove }) => {
       {/* Image of the spectacle */}
       <img
         src={item.images && item.images.length > 0
-          ? `https://zoopiceye-opticals.onrender.com/uploads/${item.images[0].replace('/uploads/', '')}`
-          : `https://zoopiceye-opticals.onrender.com/uploads/default.jpg`}
+          ? `http://localhost:4000/uploads/${item.images[0].replace('/uploads/', '')}`
+          : `http://localhost:4000/uploads/default.jpg`}
         alt={item.name || 'Spectacle Image'}
         className="w-full h-48 object-cover rounded-md"
         onError={(e) => e.target.src = '/placeholder-image.jpg'}

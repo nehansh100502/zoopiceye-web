@@ -13,7 +13,7 @@ const OrderConfirmation = () => {
 
   const fetchOrderDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/v1/orders/${orderId}`);
+      const response = await fetch(`https://zoopiceye-opticals.onrender.com/api/v1/orders/${orderId}`);
 
       if (response.ok) {
         const data = await response.json();
@@ -44,7 +44,7 @@ const OrderConfirmation = () => {
   const handleCancelOrder = async () => {
     if (window.confirm('Are you sure you want to cancel this order?')) {
       try {
-        const response = await fetch(`http://localhost:4000/api/orders/cancel/${orderId}`, {
+        const response = await fetch(`https://zoopiceye-opticals.onrender.com/api/orders/cancel/${orderId}`, {
           method: 'PATCH',
         });
 

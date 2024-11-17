@@ -19,8 +19,8 @@ const CartCard = ({ item }) => {
     <div className="relative bg-[#eafefe] border border-gray-200 rounded-lg shadow-lg p-4 h-auto w-full transition-transform transform hover:scale-105">
       <img
         src={item.images && item.images.length > 0 
-          ? `http://localhost:4000/uploads/${item.images[0].replace('/uploads/', '')}`
-          : `http://localhost:4000/uploads/default.jpg`}
+          ? `https://zoopiceye-opticals.onrender.com/uploads/${item.images[0].replace('/uploads/', '')}`
+          : `https://zoopiceye-opticals.onrender.com/uploads/default.jpg`}
         alt={item.name}
         className="w-full h-48 object-cover rounded-md"
       />

@@ -25,7 +25,7 @@ const CheckoutPage = () => {
 
   const fetchUserDetails = async (token) => {
     try {
-      const response = await axios.get('http://localhost:4000/api/v1/user/profile', {
+      const response = await axios.get('https://zoopiceye-opticals.onrender.com/api/v1/user/profile', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

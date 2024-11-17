@@ -44,7 +44,7 @@ const SpectacleDetail = () => {
   useEffect(() => {
     const fetchSpectacle = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/v1/spectacles/${id}`);
+        const response = await fetch(`https://zoopiceye-opticals.onrender.com/api/v1/spectacles/${id}`);
         if (response.ok) {
           const data = await response.json();
           setSpectacle(data);
@@ -127,7 +127,7 @@ const SpectacleDetail = () => {
                 spectacle.images.map((image, index) => (
                   <div key={index}>
                     <img
-                      src={`http://localhost:4000${image}`}
+                      src={`https://zoopiceye-opticals.onrender.com/${image}`}
                       alt={spectacle.name}
                       className="w-full h-96 object-cover rounded-md"
                     />
@@ -135,7 +135,7 @@ const SpectacleDetail = () => {
                 ))
               ) : (
                 <img
-                  src={`http://localhost:4000/uploads/default.jpg`}
+                  src={`https://zoopiceye-opticals.onrender.com/uploads/default.jpg`}
                   alt="Default"
                   className="w-full h-96 object-cover rounded-md"
                 />

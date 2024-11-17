@@ -9,7 +9,7 @@ const PaymentMethod = () => {
 
   const fetchPaymentDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/v1/checkout/${orderId}`); // Replace with your API endpoint
+      const response = await fetch(`https://zoopiceye-opticals.onrender.com/api/v1/checkout/${orderId}`); // Replace with your API endpoint
 
       if (response.ok) {
         const data = await response.json();

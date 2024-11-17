@@ -28,7 +28,7 @@ const UserProfile = () => {
           setLoading(false);
         } else {
           
-          const response = await axios.get('http://localhost:4000/api/v1/getUserProfileId');
+          const response = await axios.get('https://zoopiceye-opticals.onrender.com/api/v1/getUserProfileId');
           const { name, dob } = response.data;
 
           const userProfileData = {
@@ -69,7 +69,7 @@ const UserProfile = () => {
       formData.append('name', user.name);
       formData.append('dob', user.dob);
 
-      await axios.post('http://localhost:4000/api/v1/updateProfile', formData, {
+      await axios.post('https://zoopiceye-opticals.onrender.com/api/v1/updateProfile', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

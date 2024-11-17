@@ -399,7 +399,7 @@ const SpectacleCard = ({ spectacle, isSelected, onSelect }) => {
           {spectacle.images && spectacle.images.length > 0 ? (
             <Slider {...settings} className="mb-4">
               {spectacle.images.map((image, index) => {
-                const finalImageUrl = `http://localhost:4000/uploads/${image.replace('/uploads/', '')}`;
+                const finalImageUrl = `https://zoopiceye-opticals.onrender.com/uploads/${image.replace('/uploads/', '')}`;
                 return (
                   <div key={index} className="relative">
                     <h2 className='text-[#61ff35] bg-gradient-to-r from-[#0795c0] to-[#1430bfcb] w-24 h-7 rounded-tl-xl rounded-br-xl p-1 text-sm'>New Arrivals*</h2>
@@ -414,7 +414,7 @@ const SpectacleCard = ({ spectacle, isSelected, onSelect }) => {
             </Slider>
           ) : (
             <img
-              src={`http://localhost:4000/uploads/default.jpg`} // Default image if no images exist
+              src={`https://zoopiceye-opticals.onrender.com/uploads/default.jpg`} // Default image if no images exist
               alt={spectacle.name}
               className="w-full h-48 object-cover rounded-md"
             />
@@ -468,7 +468,7 @@ const SpectacleList = () => {
   useEffect(() => {
     const fetchSpectacles = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/v1/spectacles');
+        const response = await fetch('https://zoopiceye-opticals.onrender.com/api/v1/spectacles');
         if (response.ok) {
           const data = await response.json();
 

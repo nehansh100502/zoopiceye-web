@@ -18,7 +18,7 @@ export const OrderProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`http://localhost:4000/api/v1/orders/user${userId}`, {
+            const response = await axios.get(`https://zoopiceye-opticals.onrender.com/api/v1/orders/user${userId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('userToken')}`,
                 },

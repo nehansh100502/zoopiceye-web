@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const corsOptions = {
-    origin: 'http://localhost:5173', 
+    origin: 'https://zoopiceye-opticals.onrender.com/', 
     credentials: true,               
     allowedHeaders: ['Content-Type', 'Authorization']
 };

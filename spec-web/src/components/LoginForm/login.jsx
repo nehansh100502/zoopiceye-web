@@ -363,7 +363,7 @@ const Login = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch('http://localhost:4000/api/v1/login', {
+      const response = await fetch('https://zoopiceye-opticals.onrender.com/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -392,7 +392,7 @@ const Login = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch('http://localhost:4000/api/v1/request-otp', {
+      const response = await fetch('https://zoopiceye-opticals.onrender.com/api/v1/request-otp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -419,7 +419,7 @@ const Login = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch('http://localhost:4000/api/v1/reset-password', {
+      const response = await fetch('https://zoopiceye-opticals.onrender.com/api/v1/reset-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

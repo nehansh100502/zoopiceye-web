@@ -12,7 +12,7 @@ const PaymentProcess = () => {
   // Fetch the order details using the orderId
   const fetchOrderDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/v1/orders/${orderId}`);
+      const response = await axios.get(`https://zoopiceye-opticals.onrender.com/api/v1/orders/${orderId}`);
       if (response.data.success) {
         setOrderDetails(response.data.order);
       } else {

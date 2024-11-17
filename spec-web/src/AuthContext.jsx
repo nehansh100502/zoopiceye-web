@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
 
 const fetchUserProfile = async (token) => {
   try {
-      const response = await fetch('http://localhost:4000/api/v1/user/profile', {
+      const response = await fetch('https://zoopiceye-opticals.onrender.com/api/v1/user/profile', {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,
@@ -95,7 +95,7 @@ useEffect(() => {
 
 const fetchUserDetails = async (token) => {
   try {
-      const response = await fetch('http://localhost:4000/api/v1/user/Details', {
+      const response = await fetch('https://zoopiceye-opticals.onrender.com/api/v1/user/Details', {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,
@@ -132,7 +132,7 @@ const fetchUserDetails = async (token) => {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/api/v1/refresh-token', {
+      const response = await fetch('https://zoopiceye-opticals.onrender.com/api/v1/refresh-token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

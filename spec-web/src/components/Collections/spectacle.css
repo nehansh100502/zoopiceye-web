@@ -20,3 +20,57 @@
         font-size: 30px;
     }
 }
+/* General Styles for Mobile Responsiveness */
+@media (max-width: 640px) {
+    /* Adjust button size for smaller screens */
+    button {
+      font-size: 12px; /* Reduce font size */
+      padding: 8px 12px; /* Adjust padding */
+    }
+  
+    /* Shop Now button specifically */
+    .shop-now-button {
+      padding: 6px 10px; /* Reduce padding */
+      font-size: 10px; /* Smaller font for mobile */
+      border-radius: 4px; /* Adjust border radius for a compact look */
+    }
+  
+    /* Slider Image */
+    .slick-slider img {
+      height: 36vw; /* Adjust the image height for small screens */
+    }
+  
+    /* Filter Section for Mobile */
+    .filter-section {
+      padding: 10px; /* Reduce padding for smaller screens */
+      font-size: 12px; /* Adjust font size for better readability */
+    }
+  
+    /* Spectacle Card Adjustments */
+    .spectacle-card {
+      padding: 8px; /* Compact padding */
+    }
+  
+    /* Make text more compact */
+    .spectacle-card h3 {
+      font-size: 14px;
+    }
+    .spectacle-card p {
+      font-size: 12px;
+    }
+  }
+  
+  /* Styles for smaller mobile screens (very compact view) */
+  @media (max-width: 480px) {
+    /* Shop Now button */
+    .shop-now-button {
+      padding: 5px 8px;
+      font-size: 9px;
+    }
+  
+    /* Spectacle cards grid */
+    .grid-cols-2 {
+      grid-template-columns: 1fr; /* Stack cards in a single column */
+    }
+  }
+  

@@ -436,14 +436,15 @@ const SpectacleCard = ({ spectacle, isSelected, onSelect }) => {
                 {isWishlisted ? <FaHeart size={20} /> : <FaRegHeart size={20} />}
               </button>
               <button
-                onClick={(event) => {
-                  event.stopPropagation(); // Prevent event bubbling to card click
-                  handleShopNow();
-                }}
-                className="bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-white py-2 px-4 rounded-lg shadow-md hover:bg-[#2e84a9] transition duration-300"
-              >
-                Shop Now
-              </button>
+  onClick={(event) => {
+    event.stopPropagation(); // Prevent event bubbling to card click
+    handleShopNow();
+  }}
+  className="shop-now-button bg-gradient-to-b from-[#0f90c3] to-[#06275f] text-white py-2 px-4 rounded-lg shadow-md hover:bg-[#2e84a9] transition duration-300"
+>
+  Shop Now
+</button>
+
             </div>
           </div>
         </div>

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon spec-backend/server.js",
+    "build":"npm install && npm install --prefix spec-web && npm run build --prefix spec-web",
+    "start": "nodemon spec-backend/server.js"
   },
   "author": "neha singh",
   "license": "ISC",

@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require('path');
 
 if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config({ path: "config/config.env" });
+    require("dotenv").config({ path: ".env" });
 }
 
 const corsOptions = {
@@ -52,5 +52,9 @@ app.use("/api/v1", UserProfile);
 app.use("/api/v1", Contact);
 app.use("/api/v1", Nodemailer);
 app.use("/api/v1", Payment);
+app.use(express.static(path.join(__dirname, "../spec-web/dist")));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "spec-web", "dist", "index.html"));
+});
 
 module.exports = app;

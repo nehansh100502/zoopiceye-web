@@ -1,9 +1,11 @@
+require('dotenv').config(); // 👈 MUST be before anything else
 
 const app = require('./app');
 const mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 4000;
 const DB_URI = process.env.DB_URI;
+
 
 mongoose.connect(DB_URI,{connectTimeoutMS: 30000})
  

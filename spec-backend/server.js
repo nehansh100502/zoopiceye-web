@@ -1,4 +1,3 @@
-require('dotenv').config(); // 👈 MUST be before anything else
 
 const app = require('./app');
 const mongoose = require('mongoose');

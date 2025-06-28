@@ -34,11 +34,7 @@ app.use(cors(corsOptions));
 // ✅ Handle preflight (OPTIONS) requests
 app.options("*", cors(corsOptions));
 
-// 🔍 Optional: log incoming origins
-app.use((req, res, next) => {
-  console.log("🔍 Request Origin:", req.headers.origin);
-  next();
-});
+
 
 // Body parsing
 app.use(express.json());
@@ -82,6 +78,15 @@ app.use(express.static(path.join(__dirname, "../spec-web/dist")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "spec-web", "dist", "index.html"));
+});
+
+
+app.use((err, req, res, next) => {
+  if (err.message && err.message.includes("CORS")) {
+    console.error("🔴 CORS Error Middleware:", err.message);
+    return res.status(403).json({ error: "CORS policy error" });
+  }
+  next(err);
 });
 
 module.exports = app;

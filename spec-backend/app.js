@@ -7,30 +7,38 @@ if (process.env.NODE_ENV !== "production") {
     require("dotenv").config({ path: ".env" });
 }
 
+// const corsOptions = {
+//     origin: 'https://zoopiceye-opticals.onrender.com', 
+//     credentials: true,               
+//     allowedHeaders: ['Content-Type', 'Authorization']
+// };
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://zoopiceye-web.vercel.app',
+  'https://zoopiceye-opticals.onrender.com'
+];
+
 const corsOptions = {
-    origin: 'https://zoopiceye-opticals.onrender.com', 
-    credentials: true,               
-    allowedHeaders: ['Content-Type', 'Authorization']
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.error('❌ Blocked by CORS:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
-
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     const cleanOrigin = origin?.replace(/\/$/, ''); // Remove trailing slash
-//     if (!origin || allowedOrigins.includes(cleanOrigin)) {
-//       callback(null, true);
-//     } else {
-//       console.error("Blocked CORS for origin:", origin);
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true
-// }));
-
-
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Preflight support
 
-
+app.use((req, res, next) => {
+  console.log('🔍 Request Origin:', req.headers.origin);
+  next();
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
